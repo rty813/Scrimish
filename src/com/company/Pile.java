@@ -21,4 +21,20 @@ public class Pile {
     public int getTop() {
         return top;
     }
+
+    public Pile(){
+        pileCard = new Card[10];
+        top = 0;
+    }
+
+    public void push(Card card){
+        top++;
+        pileCard[top] = card;
+    }
+
+    public Card pop()
+    {
+        top--;
+        return pileCard[top+1];
+    }
 }

@@ -13,10 +13,11 @@ public class Main {
         Scrimish computer = new Scrimish();
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Welcome to Scrimish Game!\n");
-        System.out.println("Now, you can set your cards by input 1~6, A, S or C.\n" +
+        System.out.println("Welcome to Scrimish Game!");
+        System.out.println("Now, you can set your cards by input 1~6, A, S or C." +
                 "   Caution! Crown Card must be hidden on the bottom of one of the 5 piles!");
         while (true) {
+            user.init();
             System.out.println("Please input your first pile of cards(from bottom to top): ");
             user.createaPile(1);
             System.out.println("Please input your second pile of cards(from bottom to top): ");
@@ -27,11 +28,17 @@ public class Main {
             user.createaPile(4);
             System.out.println("Please input your fifth pile of cards(from bottom to top): ");
             user.createaPile(5);
+            System.out.println();
+            if (!user.checkCardNum()){
+                System.out.println("Card Num Error! Please reset your cards!");
+                continue;
+            }
+            user.printPiles();
             System.out.println("Now, please check your cards, if there is no problem, input \"Y\", else input \"N\": ");
-            if (in.nextLine().equals("Y"))
+            if (in.nextLine().toUpperCase().equals("Y"))
                 break;
         }
-        System.out.println("OK! Computer has already set the cards. Let's begin to fight!\n");
+        System.out.println("OK! Computer has already set the cards. Let's begin to fight!");
     }
 }
 
