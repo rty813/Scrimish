@@ -48,7 +48,7 @@ public class Main {
         // boolean operateDone = false;
         while (true) {
             try {
-                sleep(1500);
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -86,7 +86,7 @@ public class Main {
                         continue;
                     }
                     userPile.pop();
-                    computer.autoOperate();
+                    computer.autoOperate("Computer", "You", user);
                     break;
                 }
                 if (operation != 1){
@@ -127,13 +127,13 @@ public class Main {
             System.out.print("Your card is " + userCard.getTypeName() + "    ");
             System.out.println("Computer's card is "+computerCard.getTypeName());
             if (computerCard.getType() == 0){
-                System.out.println("Victory!!!");
+                System.out.println("You Victory!!!");
                 System.in.read();
                 System.exit(0);
             }
             switch (userCard.getType()){
                 case 0:
-                    System.out.println("Defeat!!!");
+                    System.out.println("Computer Victory!!!");
                     System.in.read();
                     System.exit(0);
                 case 7:
@@ -172,7 +172,8 @@ public class Main {
                                 }
                     }
             }
-            computer.autoOperate();
+            computer.autoOperate("Computer", "You", user);
+            System.in.read();
         }
 
     }

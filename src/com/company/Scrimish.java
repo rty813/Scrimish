@@ -2,6 +2,7 @@ package com.company;
 
 import sun.reflect.Reflection;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
@@ -42,9 +43,85 @@ public class Scrimish {
         return piles[pile];
     }
 
-    public void autoOperate(){
-        System.out.println("Computer is operating!");
+    public void autoOperate(String myName, String hisName, Scrimish opponent) throws IOException {
+        System.out.println(myName + " is operating!");
+        int operate = (int) (Math.random() * 10) + 1;
+        int pileNum = (int) (Math.random() * 5) + 1;
+        Pile myPile = piles[pileNum];
+        Card myCard = myPile.getTopCard();
+        if (operate == 1){
+            System.out.println(myName + " discard a card from pile" + pileNum);
+            piles[pileNum].pop();
+            return;
+        }else{
+            while ( myCard.getType() == 8) {
+                pileNum = (int) (Math.random() * 5) + 1;
+                myPile = piles[pileNum];
+                myCard = myPile.getTopCard();
+            }
+            System.out.print(myName + " choose a card from pile" + pileNum +
+                    " to attack " + hisName + " pile");
+            Pile hisPile;
+            Card hisCard;
+            do{
+                pileNum = (int) (Math.random() * 5) + 1;
+                hisPile = opponent.getPile(pileNum);
+            }while(hisPile.getTop() == 0);
+            hisCard = hisPile.getTopCard();
+            System.out.println(pileNum);
+            System.out.print(myName + " card is " + myCard.getTypeName() + "    ");
+            System.out.println(hisName + " card is" + hisCard.getTypeName());
 
+            if (hisCard.getType() == 0){
+                System.out.println(myName + " Victory!!!");
+                System.in.read();
+                System.exit(0);
+            }
+            switch(myCard.getType()){
+                case 0:
+                    System.out.println(hisName + " Victory!!!");
+                    System.in.read();
+                    System.exit(0);
+                    break;
+                case 7:
+                    if (hisCard.getType() == 8){
+                        System.out.println("Neither card will be discarded");
+                        return;
+                    }else
+                    {
+                        System.out.println(myName + " win!");
+                        hisPile.pop();
+                    }
+                    break;
+                default:
+                    switch (hisCard.getType()){
+                        case 7:
+                            System.out.println(myName + " win!");
+                            hisPile.pop();
+                            break;
+                        case 8:
+                            System.out.println("Both card will be discarded!");
+                            myPile.pop();
+                            hisPile.pop();
+                            break;
+                        default:
+                            if (myCard.getType() == hisCard.getType()){
+                                System.out.println("Both card will be discarded!");
+                                myPile.pop();
+                                hisPile.pop();
+                            }else{
+                                if (myCard.getType() > hisCard.getType()){
+                                    System.out.println(myName + " win!");
+                                    hisPile.pop();
+                                }else
+                                {
+                                    System.out.println(hisName + " win!");
+                                    myPile.pop();
+                                }
+                            }
+                    }
+            }
+        }
     }
 
     public void printPiles(){
