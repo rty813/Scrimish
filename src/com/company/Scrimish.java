@@ -2,6 +2,8 @@ package com.company;
 
 import java.util.Scanner;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by zhang on 2016/11/29.
  */
@@ -34,6 +36,14 @@ public class Scrimish {
         cardNum[0] = 1;
     }
 
+    public Pile getPile(int pile) {
+        return piles[pile];
+    }
+
+    public void autoOperate(){
+        System.out.println(this.toString() + "is operating");
+    }
+
     public void printPiles(){
         for (int i=1; i<=5; i++){
             System.out.print("Pile" + i + ": ");
@@ -52,6 +62,16 @@ public class Scrimish {
                     default:
                         System.out.print(cards[j].getType() + " ");
                 }
+            }
+            System.out.println();
+        }
+    }
+
+    public void printEasyPiles(){
+        for (int i=1; i<=5; i++){
+            System.out.print("Pile" + i + ": ");
+            for (int j=1; j<=piles[i].getTop(); j++){
+                System.out.print("# ");
             }
             System.out.println();
         }
@@ -130,6 +150,31 @@ public class Scrimish {
         }
 
     }
+
+    public void autoSetaPile(){
+        int crownCard = (int)(Math.random() * 5) + 1;
+        piles[crownCard] = new Pile();
+        piles[crownCard].push(new Card(0));
+        for (int i=1; i<=5; i++){
+            int pileNum = 5;
+            if (i == crownCard){
+                pileNum = 4;
+            }
+            else{
+                piles[i] = new Pile();
+            }
+            for (int j=0; j<pileNum; j++){
+                int card = (int)(Math.random() * 8) + 1;
+                if (cardNum[card] == 0){
+                    j--;
+                    continue;
+                }
+                cardNum[card]--;
+                piles[i].push(new Card(card));
+            }
+        }
+    }
+
     public boolean checkCardNum(){
         for (int i=0; i<9; i++){
             if (cardNum[i] < 0){

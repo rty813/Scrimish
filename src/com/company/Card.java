@@ -27,6 +27,18 @@ public class Card {
         return type;
     }
 
+    public String getTypeName() {
+        switch (type){
+            case 7:
+                return "A";
+            case 8:
+                return "S";
+            case 0:
+                return "C";
+            default:
+                return String.format("%d",type);
+        }
+    }
 
     //    private cardEnum type;
 //    public Card(cardEnum type)
