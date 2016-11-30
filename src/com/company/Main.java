@@ -73,7 +73,7 @@ public class Main {
                 }
                 userCard = userPile.getTopCard();
 
-                System.out.print("Please input operation 1、attack  2、discard: ");
+                System.out.print("Please input operation 1.attack  2.discard: ");
                 operation = in.nextInt();
                 if (operation == 2){
                     if (userCard.getType()==0){
