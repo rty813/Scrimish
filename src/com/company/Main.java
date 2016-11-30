@@ -16,23 +16,23 @@ public class Main {
         System.out.println("Now, you can set your cards by input 1~6, A, S or C." +
                 "   Caution! Crown Card must be hidden on the bottom of one of the 5 piles!");
         while (true) {
-//            user.init();
-//            System.out.println("Please input your first pile of cards(from bottom to top): ");
-//            user.createaPile(1);
-//            System.out.println("Please input your second pile of cards(from bottom to top): ");
-//            user.createaPile(2);
-//            System.out.println("Please input your third pile of cards(from bottom to top): ");
-//            user.createaPile(3);
-//            System.out.println("Please input your fourth pile of cards(from bottom to top): ");
-//            user.createaPile(4);
-//            System.out.println("Please input your fifth pile of cards(from bottom to top): ");
-//            user.createaPile(5);
-//            System.out.println();
-//            if (!user.checkCardNum()){
-//                System.out.println("Card Num Error! Please reset your cards!");
-//                continue;
-//            }
-            user.autoSetaPile();        //!!!!!!!!! 临时测试 !!!!!!!!!!
+            user.init();
+            System.out.println("Please input your first pile of cards(from bottom to top): ");
+            user.createaPile(1);
+            System.out.println("Please input your second pile of cards(from bottom to top): ");
+            user.createaPile(2);
+            System.out.println("Please input your third pile of cards(from bottom to top): ");
+            user.createaPile(3);
+            System.out.println("Please input your fourth pile of cards(from bottom to top): ");
+            user.createaPile(4);
+            System.out.println("Please input your fifth pile of cards(from bottom to top): ");
+            user.createaPile(5);
+            System.out.println();
+            if (!user.checkCardNum()){
+                System.out.println("Card Num Error! Please reset your cards!");
+                continue;
+            }
+//            user.autoSetaPile();        //!!!!!!!!! 临时测试 !!!!!!!!!!
 
             user.printPiles();
             System.out.println("Now, please check your cards, if there is no problem, input \"Y\", else input \"N\": ");
@@ -45,7 +45,6 @@ public class Main {
 
 
         // Begin Fight!!!
-        // boolean operateDone = false;
         while (true) {
             try {
                 sleep(1000);
@@ -57,8 +56,8 @@ public class Main {
             System.out.println("Your Scrimish:");
             user.printPiles();
             System.out.println("Computer's Scrimish");
-            //computer.printEasyPiles();
-            computer.printPiles();
+            computer.printEasyPiles();
+            //computer.printPiles();
 
             Pile userPile;
             int userPileNum;
