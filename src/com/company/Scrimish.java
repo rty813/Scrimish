@@ -45,9 +45,14 @@ public class Scrimish {
 
     public void autoOperate(String myName, String hisName, Scrimish opponent) throws IOException {
         System.out.println(myName + " is operating!");
-        int operate = (int) (Math.random() * 10) + 1;
-        int pileNum = (int) (Math.random() * 5) + 1;
-        Pile myPile = piles[pileNum];
+        int operate = (int) (Math.random() * 20) + 1;
+        int pileNum;
+        Pile myPile;
+        do{
+            pileNum = (int) (Math.random() * 5) + 1;
+            myPile = piles[pileNum];
+        }while(myPile.getTop() == 0);
+
         Card myCard = myPile.getTopCard();
         if (operate == 1){
             System.out.println(myName + " discard a card from pile" + pileNum);
@@ -70,7 +75,7 @@ public class Scrimish {
             hisCard = hisPile.getTopCard();
             System.out.println(pileNum);
             System.out.print(myName + " card is " + myCard.getTypeName() + "    ");
-            System.out.println(hisName + " card is" + hisCard.getTypeName());
+            System.out.println(hisName + " card is " + hisCard.getTypeName());
 
             if (hisCard.getType() == 0){
                 System.out.println(myName + " Victory!!!");
