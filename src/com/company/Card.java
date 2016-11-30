@@ -4,17 +4,17 @@ package com.company;
  * Created by zhang on 2016/11/29.
  */
 
-enum cardEnum{
-    DaggerCard, SwordCard, MorningStarCard, WarAxeCard,
-    HalberdCard, LongswordCard, ArcherCard, ShieldCard, CrownCard
-}
-enum normalCardEnum{
-    DaggerCard, SwordCard, MorningStarCard, WarAxeCard,
-    HalberdCard, LongswordCard
-}
-enum specialCardEnum{
-    ArcherCard, ShieldCard, CrownCard
-}
+//enum cardEnum{
+//    DaggerCard, SwordCard, MorningStarCard, WarAxeCard,
+//    HalberdCard, LongswordCard, ArcherCard, ShieldCard, CrownCard
+//}
+//enum normalCardEnum{
+//    DaggerCard, SwordCard, MorningStarCard, WarAxeCard,
+//    HalberdCard, LongswordCard
+//}
+//enum specialCardEnum{
+//    ArcherCard, ShieldCard, CrownCard
+//}
 
 public class Card {
 
