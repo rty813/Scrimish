@@ -1,12 +1,13 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scrimish user = new Scrimish();
         Scrimish computer = new Scrimish();
         Scanner in = new Scanner(System.in);
@@ -66,6 +67,10 @@ public class Main {
             while (true){
                 System.out.print("Now, please choose a card from a pile(1~5): ");
                 userPileNum = in.nextInt();
+                if ((userPileNum > 5) || (userPileNum < 1)){
+                    System.out.println("Error");
+                    continue;
+                }
                 userPile = user.getPile(userPileNum);
                 if (userPile.getTop() == 0){
                     System.out.println("There is no card in this pile, please choose again!");
@@ -99,13 +104,17 @@ public class Main {
             if (operation == 2){
                 continue;
             }
-
+            //operation == 1 ( attack!!! )
             Pile computerPile;
             Card computerCard;
             int computerPileNum;
             while (true){
                 System.out.print("Please choose a card form a pile of computer to attack: ");
                 computerPileNum = in.nextInt();
+                if ((computerPileNum > 5) || (computerPileNum < 1)){
+                    System.out.println("Error!");
+                    continue;
+                }
                 computerPile = computer.getPile(computerPileNum);
                 if (computerPile.getTop() == 0){
                     System.out.println("There is no card in this pile, please choose again!");
@@ -117,7 +126,53 @@ public class Main {
 
             System.out.print("Your card is " + userCard.getTypeName() + "    ");
             System.out.println("Computer's card is "+computerCard.getTypeName());
-
+            if (computerCard.getType() == 0){
+                System.out.println("Victory!!!");
+                System.in.read();
+                System.exit(0);
+            }
+            switch (userCard.getType()){
+                case 0:
+                    System.out.println("Defeat!!!");
+                    System.in.read();
+                    System.exit(0);
+                case 7:
+                    if (computerCard.getType() == 8){
+                        System.out.println("Neither card will be discarded");
+                        continue;
+                    }else
+                    {
+                        System.out.println("You win!");
+                        computerPile.pop();
+                    }
+                    break;
+                default:
+                    switch (computerCard.getType()){
+                        case 7:
+                            System.out.println("You win!");
+                            computerPile.pop();
+                            break;
+                        case 8:
+                            System.out.println("Both card will be discarded!");
+                            computerPile.pop();
+                            userPile.pop();
+                            break;
+                        default:
+                            if (userCard.getType() == computerCard.getType()){
+                                System.out.println("Both card will be discarded!");
+                                computerPile.pop();
+                                userPile.pop();
+                            }else
+                                if (userCard.getType() > computerCard.getType()){
+                                    System.out.println("You win!");
+                                    computerPile.pop();
+                                }else{
+                                    System.out.println("You lose");
+                                    userPile.pop();
+                                }
+                    }
+            }
+            computer.autoOperate();
         }
 
     }

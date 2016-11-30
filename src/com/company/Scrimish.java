@@ -43,7 +43,8 @@ public class Scrimish {
     }
 
     public void autoOperate(){
-        System.out.println(this.toString() + "is operating");
+        System.out.println("Computer is operating!");
+
     }
 
     public void printPiles(){
