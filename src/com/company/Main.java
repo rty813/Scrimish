@@ -2,7 +2,6 @@ package com.company;
 
 import java.io.IOException;
 import java.util.Scanner;
-
 import static java.lang.Thread.sleep;
 
 public class Main {
@@ -11,7 +10,6 @@ public class Main {
         Scrimish user = new Scrimish();
         Scrimish computer = new Scrimish();
         Scanner in = new Scanner(System.in);
-
         System.out.println("Welcome to Scrimish Game!");
         System.out.println("Now, you can set your cards by input 1~6, A, S or C." +
                 "   Caution! Crown Card must be hidden on the bottom of one of the 5 piles!");
@@ -42,8 +40,6 @@ public class Main {
         computer.autoSetaPile();
         //computer.printPiles();
         System.out.println("OK! Computer has already set the cards. Let's begin to fight!");
-
-
         // Begin Fight!!!
         while (true) {
             try {

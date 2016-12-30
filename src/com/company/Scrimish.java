@@ -26,7 +26,9 @@ public class Scrimish {
         cardNum[8] = 2;
         cardNum[0] = 1;
     }
-
+    public void caonima(){
+        System.out.println("caonima");
+    }
     public void init(){
         cardNum[1] = 5;
         cardNum[2] = 5;

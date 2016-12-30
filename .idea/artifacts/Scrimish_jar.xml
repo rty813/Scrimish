@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Scrimish:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Scrimish_jar</output-path>
+    <root id="archive" name="Scrimish.jar">
+      <element id="module-output" name="Scrimish" />
+    </root>
+  </artifact>
+</component>
